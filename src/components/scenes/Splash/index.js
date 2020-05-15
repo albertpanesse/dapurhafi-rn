@@ -8,8 +8,17 @@ import styles from './styles';
 
 class Splash extends Component {
   static navigationOptions = {
-    header: null,
+    headerShown: false,
   };
+
+  componentDidMount() {
+    this.timeout = setTimeout(() => {
+      if (this.props.isAuthenticated) {
+      } else {
+        this.props.navigation.navigate('SignIn');
+      }
+    }, 2000);
+  }
 
   render() {
     return (
@@ -21,7 +30,9 @@ class Splash extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isAuthenticated: state.commonReducer.isAuthenticated
+});
 
 const mapDispatchToProps = dispatch => ({});
 

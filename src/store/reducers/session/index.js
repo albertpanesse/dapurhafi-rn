@@ -1,8 +1,7 @@
 import Types from './types';
 
 const initialState = {
-	isNetworkOk: true,
-	isAuthenticated: false
+	user: null
 };
 
 const reducer = (state = initialState, action) => {

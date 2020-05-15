@@ -1,7 +1,9 @@
+import SplashScene from './Splash';
+import SignInScene from './SignIn';
 import LatestScene from './Latest';
-import AuthScene from './Auth';
 
 export {
-	AuthScene,
+	SplashScene,
+	SignInScene,
 	LatestScene
 }
