@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     flex: 9,
   },
   inputOnFocus: {
-    borderColor: appSetup.danger,
+    borderColor: appSetup.darkGreen,
     borderBottomWidth: 2,
   },
   inputOnBlur: {

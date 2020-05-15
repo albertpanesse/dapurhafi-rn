@@ -12,7 +12,7 @@ const CustomRoundedButton = ({children, onPress, theme, loading = false, disable
       <TouchableHighlight
         onPress={disabled || loading ? undefined : onPress} //fixed by QQ ()=>{} ===> undefined
         style={[styles.button, disabled && styles.disabled, buttonStyle]}
-        underlayColor={appSetup[disabled ? 'disabled' : 'dangerDark']}>
+        underlayColor={appSetup[disabled ? 'disabled' : 'darkGreen']}>
         {loading ? (
           <View style={styles.loadingContainer}>
             <ActivityIndicator
@@ -32,7 +32,7 @@ const CustomRoundedButton = ({children, onPress, theme, loading = false, disable
 CustomRoundedButton.propTypes = {
   children: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
-  theme: PropTypes.oneOf(['danger', 'primary', 'disabled']).isRequired,
+  theme: PropTypes.oneOf(['darkGreen', 'primary', 'disabled']).isRequired,
   square: PropTypes.bool,
   disabled: PropTypes.bool,
   buttonStyle: PropTypes.any,

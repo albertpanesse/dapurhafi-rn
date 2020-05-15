@@ -8,7 +8,9 @@ import {CommonHeader, Input, PhoneField, TextContent} from '@/components/base';
 import {ButtonTransparent, ContentScroll, CustomRoundedButton} from '@/components/UI';
 import withNotification from '@/hoc/withNotification';
 import reduxFormClear from '@/utils/helpers/reduxFormClear';
-import {passwordValidation, mobileNumberValidation} from '@/utils/helpers/inputDataValidation';
+import {emailValidation, fullNameValidation, mobileNumberValidation, passwordValidation} from '@/utils/helpers/inputDataValidation';
+import {actions as sessionActions} from '@/reducers/session';
+import {actions as profileActions} from '@/reducers/profile';
 import appSetup from '@/setup';
 
 import styles from './styles';
@@ -38,17 +40,35 @@ class SignUp extends Component {
 
   render() {
     const {handleSubmit, navigation, ISOcode, callingCode} = this.props;
-    const {loading} = this.props.request;
+    const {loading} = this.props;
+
     return (
       <Container>
         <ContentScroll style={styles.content}>
           <View style={styles.inputContainer}>
             <Field
+              label="Full name"
+              name="fullName"
+              placeholder="Full name"
+              component={Input}
+              returnKeyType="done"
+              autoCorrect={false}
+              validate={fullNameValidation}
+            />
+            <Field
+              label="Email"
+              name="email"
+              placeholder="Email"
+              component={Input}
+              returnKeyType="done"
+              autoCorrect={false}
+              validate={emailValidation}
+            />
+            <Field
               label="Phone number"
               name="mobileNumber"
               component={PhoneField}
               keyboardType="numeric"
-              placeholder="Phone"
               autoCorrect={false}
               onEraseText={() =>
                 reduxFormClear(
@@ -92,7 +112,7 @@ class SignUp extends Component {
               By signing up you agree to our{' '}
             </Text>
             <TouchableOpacity onPress={() => navigation.navigate('TermsOfUse')}>
-              <Text style={{fontWeight: 'bold', color: appSetup.danger}}>
+              <Text style={{fontWeight: 'bold', color: appSetup.darkGreen}}>
                 {' Privacy Policy'}
               </Text>
             </TouchableOpacity>
@@ -101,7 +121,7 @@ class SignUp extends Component {
             <CustomRoundedButton
               buttonStyle={{width: '80%'}}
               onPress={handleSubmit(this._onSignUp)}
-              theme="danger"
+              theme="darkGreen"
               loading={loading}>
               Next
             </CustomRoundedButton>
@@ -113,15 +133,15 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: sessionSelectors.user(state),
-  request: state.request,
-  ISOcode: editProfileSelectors.ISOcode(state),
-  callingCode: editProfileSelectors.callingCode(state),
+  user: state.sessionReducer.user,
+  loading: state.commonReducer.loading,
+  ISOcode: state.profileReducer.ISOcode,
+  callingCode: state.profileReducer.callingCode,
 });
 
 const mapDispatchToProps = dispatch => ({
-  signup: navigation => dispatch(sessionActions.signup(navigation)),
-  editPhoneCode: obj => dispatch(editProfileActions.editPhoneCode(obj))
+  signUp: navigation => dispatch(sessionActions.signUp(navigation)),
+  editPhoneCode: obj => dispatch(profileActions.editPhoneCode(obj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withNotification(reduxForm({form: 'signup', destroyOnUnmount: false})(SignUp)));

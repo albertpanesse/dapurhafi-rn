@@ -1,5 +1,7 @@
 import * as Types from './types';
 
+import {Session as SessionApis} from '@/apis';
+
 export const signIn = () => (dispatch, getState) => {
   const {email, paswd} = getState().form.signin.values;
   const signInData = {
@@ -10,7 +12,7 @@ export const signIn = () => (dispatch, getState) => {
   dispatch({type: Types.SIGN_IN_START});
   dispatch(requestActions.start());
 
-  apiSignin(signInData)
+  SessionApis.signIn(signInData)
     .then(response => {
       storage.saveSession(response.data);
       const {user, tokens} = response.data;

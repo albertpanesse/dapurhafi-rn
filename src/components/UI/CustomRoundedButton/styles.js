@@ -10,7 +10,7 @@ const styles = StyleSheet.create ({
     paddingVertical: appSetup.textSizes.subtext + 2,
     paddingHorizontal: 30,
     alignItems: 'center',
-    backgroundColor: appSetup.danger,
+    backgroundColor: appSetup.darkGreen,
     borderRadius: 100,
   },
 

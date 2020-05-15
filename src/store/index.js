@@ -1,7 +1,7 @@
 import devTools from 'remote-redux-devtools';
 import {applyMiddleware, compose, createStore} from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './reducers';
+import reducer from '@/reducers';
 import {persistStore, persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 

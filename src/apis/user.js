@@ -1,8 +1,8 @@
 import ApiAddresses from './addresses';
 
-export const register = body => {
+export const signUp = body => {
   return axios({
-    url: ApiAddresses.USER_REGISTER,
+    url: ApiAddresses.USER_SIGNUP,
     method: 'POST',
     data: body,
   });

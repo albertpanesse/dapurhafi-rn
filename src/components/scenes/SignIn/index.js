@@ -7,7 +7,8 @@ import {Input, PhoneField, TextContent} from '@/components/base';
 import {ButtonRounded, ButtonTransparent, ContentScroll, Logo} from '@/components/UI';
 
 import appSetup from '@/setup';
-import sessionActions from '@/store/reducers/session/actions';
+import {actions as sessionActions} from '@/reducers/session';
+import {actions as locationActions} from '@/reducers/location';
 
 import {emailValidation, passwordValidation} from '@/utils/helpers/inputDataValidation';
 import reduxFormClear from '@/utils/helpers/reduxFormClear';

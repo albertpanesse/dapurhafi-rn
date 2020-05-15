@@ -1,8 +1,8 @@
 import Types from './types';
 
 const initialState = {
-	isNetworkOk: true,
-	isAuthenticated: false
+  ISOcode: "ID",
+  callingCode: "62",
 };
 
 const reducer = (state = initialState, action) => {

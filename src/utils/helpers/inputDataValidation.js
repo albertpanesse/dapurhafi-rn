@@ -45,6 +45,8 @@ export const usernameValidation = [
   isMaxLength(20),
 ];
 
+export const fullNameValidation = [required, isValidName]
+
 export const mobileNumberValidation = [required];
 
 export const emailValidation = [required, isValidEmail];
