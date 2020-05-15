@@ -7,7 +7,7 @@ import {Input, PhoneField, TextContent} from '@/components/base';
 import {ButtonRounded, ButtonTransparent, ContentScroll, Logo} from '@/components/UI';
 
 import appSetup from '@/setup';
-import {userActions, locationActions} from '@/store/actions';
+import sessionActions from '@/store/reducers/session/actions';
 
 import {emailValidation, passwordValidation} from '@/utils/helpers/inputDataValidation';
 import reduxFormClear from '@/utils/helpers/reduxFormClear';
@@ -126,8 +126,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUserLocation: () => dispatch(locationActions.getUserLocation()),
-  signIn: () => dispatch(userActions.signIn()),
-  editPhoneCode: obj => dispatch(editProfileActions.editPhoneCode(obj)),
+  signIn: () => dispatch(sessionActions.signIn()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'signin'})(SignIn));

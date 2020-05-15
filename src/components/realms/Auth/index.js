@@ -1,10 +1,11 @@
 import {createStackNavigator} from 'react-navigation-stack';
 
-import {SignInScene} from '@/components/scenes';
+import {SignInScene, SignUpScene} from '@/components/scenes';
 
 const Auth = createStackNavigator(
   {
     SignIn: {screen: SignInScene},
+    SignUp: {screen: SignUpScene}
   },
   {
     initialRouteName: 'SignIn',
