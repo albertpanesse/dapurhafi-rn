@@ -5,9 +5,6 @@ const styles = StyleSheet.create ({
   content: {
     flex: 1,
   },
-  inputContainer: {
-    marginTop: appSetup.windowSize * 0.18,
-  },
   buttonContainer: {
     marginTop: appSetup.windowSize * 0.2,
     marginBottom: appSetup.windowSize * 0.1,

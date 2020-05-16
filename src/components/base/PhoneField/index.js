@@ -25,34 +25,18 @@ class PhoneField extends PureComponent {
 
   render() {
     const {
-      ISOcode,
-      callingCode,
-      onChangeCallingCode,
       label,
       onEraseText,
       input,
       bindValue = false,
       meta,
+      placeholder,
       onRemove,
     } = this.props;
 
     return (
       <View style={styles.container}>
         <View style={styles.phoneNumberContainer}>
-          <View style={styles.countrySelectorContainer}>
-            <View style={styles.countrySelector}>
-              <CountryPicker
-                cca2={ISOcode}
-                translation="eng"
-                onChange={onChangeCallingCode}
-                hideAlphabetFilter={true}
-                styles={countryPickerStyle}
-              />
-            </View>
-            <TextContent style={styles.callingCodeContainer} type="regular">
-              {callingCode}
-            </TextContent>
-          </View>
           <View style={styles.inputContainer}>
             <View
               style={[
@@ -63,6 +47,7 @@ class PhoneField extends PureComponent {
                 onFocus={this._onToggleFocusHandler}
                 onBlur={this._onToggleFocusHandler}
                 style={styles.input}
+                placeholder={placeholder}
                 underlineColorAndroid="transparent"
                 placeholderTextColor={appSetup.lightDefault}
                 value={bindValue ? input.value : false}

@@ -79,6 +79,8 @@ target 'dapurhafimobile' do
 
   pod 'RNLocalize', :path => '../node_modules/react-native-localize'
 
+  pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
+
   target 'dapurhafimobileTests' do
     inherit! :complete
     # Pods for testing

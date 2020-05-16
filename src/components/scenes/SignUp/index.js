@@ -17,7 +17,7 @@ import styles from './styles';
 
 class SignUp extends Component {
   static navigationOptions = {
-    header: <CommonHeader screenTitle="Sign Up" />,
+    header: () => <CommonHeader screenTitle="Sign Up" />,
   };
 
   state = {
@@ -53,6 +53,13 @@ class SignUp extends Component {
               component={Input}
               returnKeyType="done"
               autoCorrect={false}
+              onEraseText={() =>
+                reduxFormClear(
+                  'signup',
+                  {fullName: ''},
+                  this.props.dispatch,
+                )
+              }
               validate={fullNameValidation}
             />
             <Field
@@ -62,11 +69,19 @@ class SignUp extends Component {
               component={Input}
               returnKeyType="done"
               autoCorrect={false}
+              onEraseText={() =>
+                reduxFormClear(
+                  'signup',
+                  {email: ''},
+                  this.props.dispatch,
+                )
+              }
               validate={emailValidation}
             />
             <Field
               label="Phone number"
               name="mobileNumber"
+              placeholder="Phone number (+62xxxxxxx)"
               component={PhoneField}
               keyboardType="numeric"
               autoCorrect={false}
@@ -77,9 +92,6 @@ class SignUp extends Component {
                   this.props.dispatch,
                 )
               }
-              ISOcode={ISOcode}
-              callingCode={'+'+callingCode}
-              onChangeCallingCode={this.changeCallingCode}
               validate={mobileNumberValidation}
             />
             <Field
@@ -90,6 +102,13 @@ class SignUp extends Component {
               returnKeyType="done"
               autoCorrect={false}
               secure
+              onEraseText={() =>
+                reduxFormClear(
+                  'signup',
+                  {paswd: ''},
+                  this.props.dispatch,
+                )
+              }
               validate={passwordValidation}
             />
             <Field

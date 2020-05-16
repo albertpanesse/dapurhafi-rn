@@ -8,10 +8,10 @@ const ratio = PixelRatio.get();
 const absoluteSize = size / ratio;
 
 const textSizes = {
-  regular: absoluteSize * 0.05 + ratio * 4, // ~20px
+  regular: absoluteSize * 0.05 + ratio * 4,
   medium: absoluteSize * 0.04 + ratio * 4,
-  subtext: absoluteSize * 0.025 + ratio * 4, // ~14px
-  small: absoluteSize * 0.018 + ratio * 4, // ~12px
+  subtext: absoluteSize * 0.025 + ratio * 4,
+  small: absoluteSize * 0.018 + ratio * 4,
   smallest: absoluteSize * 0.015 + ratio * 3,
 };
 

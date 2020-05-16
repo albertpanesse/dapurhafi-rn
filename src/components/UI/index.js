@@ -4,6 +4,7 @@ import ButtonRounded from './ButtonRounded';
 import ButtonTransparent from './ButtonTransparent';
 import ContentScroll from './ContentScroll';
 import CustomRoundedButton from './CustomRoundedButton';
+import ContainerCenter from './ContainerCenter';
 import Logo from './Logo';
 
 export {
@@ -12,5 +13,6 @@ export {
 	ButtonTransparent,
 	ContentScroll,
 	CustomRoundedButton,
+	ContainerCenter,
 	Logo,
 };

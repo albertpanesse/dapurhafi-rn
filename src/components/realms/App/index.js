@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import {LatestScene} from '@/components/scenes';
 
-import appTheme from '@/setup';
+import appSetup from '@/setup';
 
 const LatestStack = createStackNavigator(
   {
@@ -22,7 +22,7 @@ const App = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ focused, tintColor }) => (
           <Icon
-            name=""
+            name="fast-food-outline"
             type="ionicon"
             color={tintColor}
             size={30}
@@ -34,8 +34,8 @@ const App = createBottomTabNavigator(
   {
     initialRouteName: 'Latest',
     tabBarOptions: {
-      activeTintColor: appTheme.danger,
-      inactiveTintColor: appTheme.default,
+      activeTintColor: appSetup.darkGreen,
+      inactiveTintColor: appSetup.default,
       labelStyle: {
         fontSize: 14,
         backgroundColor: 'transparent',

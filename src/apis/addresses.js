@@ -5,4 +5,6 @@ export default {
   SESSION_SIGNOUT: `${API_HOST}/session/signout`,
 
   USER_SIGNUP: `${API_HOST}/user/signup`,
+
+  GET_LATEST_PRODUCTS: `${API_HOST}/latest`
 }

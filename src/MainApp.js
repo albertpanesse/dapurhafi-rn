@@ -5,8 +5,8 @@ import {SplashRealm, AuthRealm, AppRealm} from '@/components/realms';
 const MainApp = createSwitchNavigator(
   {
   	Splash: SplashRealm,
+    App: AppRealm,
     Auth: AuthRealm,
-    App: AppRealm
   },
   {
     initialRouteName: 'Splash',

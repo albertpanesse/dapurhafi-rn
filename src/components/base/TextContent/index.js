@@ -42,6 +42,7 @@ TextContent.propTypes = {
     'dangerDark',
     'default',
     'darkGray',
+    'darkGreen',
     'disabled',
   ]),
 };

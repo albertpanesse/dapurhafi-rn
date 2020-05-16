@@ -13,10 +13,7 @@ class Splash extends Component {
 
   componentDidMount() {
     this.timeout = setTimeout(() => {
-      if (this.props.isAuthenticated) {
-      } else {
-        this.props.navigation.navigate('SignIn');
-      }
+      this.props.navigation.navigate('Latest');
     }, 2000);
   }
 
