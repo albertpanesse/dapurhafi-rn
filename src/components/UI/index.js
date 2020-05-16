@@ -6,6 +6,7 @@ import ContentScroll from './ContentScroll';
 import CustomRoundedButton from './CustomRoundedButton';
 import ContainerCenter from './ContainerCenter';
 import Logo from './Logo';
+import ProductCard from './ProductCard';
 
 export {
 	AndroidStatusBar,
@@ -15,4 +16,5 @@ export {
 	CustomRoundedButton,
 	ContainerCenter,
 	Logo,
+	ProductCard
 };

@@ -1,9 +1,9 @@
 import reducer from './reducer';
-import * as actions from './actions';
-import Types from './types';
+import * as Actions from './actions';
+import * as Types from './types';
 
 export {
 	reducer,
-	actions,
+	Actions,
 	Types
 };

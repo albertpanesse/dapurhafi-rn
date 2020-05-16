@@ -35,5 +35,7 @@ export default {
   default: '#919191',
   darkGray: '#474747',
   disabled: '#555',
-  darkGreen: '#326300'
+  green: '#4a9400',
+  darkGreen: '#326300',
+  lightGreen: '#68cf00',
 };

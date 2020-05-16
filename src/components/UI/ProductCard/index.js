@@ -2,32 +2,24 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {Thumbnail, Text, View} from 'native-base';
 import {TouchableOpacity, Image} from 'react-native';
+import {API_HOST} from 'react-native-dotenv';
 
 import {TextContent} from '@/components/base';
-import {ButtonContainer, ButtonLike, ButtonMark} from '@/components/UI';
 
 import styles from './styles';
 
-const ProductCard = ({Product, onPreview, removeFromFavorites, addToFavorites, like, following, onFollowing, onBookMark, favorite}) => {
-  const imageUrl = Product.imagesUrls[0];
+const ProductCard = ({product, onPreview}) => {
+  const imageUrl = `${API_HOST}/image/${product.ProductPicts[0].Filename}`;
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={{ borderRadius: 10, overflow: 'hidden' }} onPress={onPreview} activeOpacity={0.7}>
-        {following && <ButtonMark icon='md-bookmark' iconContainer={styles.BookMark} onPress={addToFavorites} />}
+      <TouchableOpacity style={{ borderRadius: 10, overflow: 'hidden' }} activeOpacity={0.7}>
         <View style={styles.imageContainer}>
           <Thumbnail
             source={{ uri: imageUrl }}
             style={styles.image}
             square
           />
-          {Product.hasOwnProperty('discount') &&
-            <View style={[styles.discount]}>
-              <Text style={styles.discountText}>
-                {`-${Product.discount}%`}
-              </Text>
-            </View>
-          }
         </View>
         <View style={styles.cardBody}>
           <View style={styles.titleContainer}>
@@ -38,39 +30,14 @@ const ProductCard = ({Product, onPreview, removeFromFavorites, addToFavorites, l
               bold
               textStyle={{fontSize: 21}}
             >
-              {Product.title}
+              {product.Name}
             </TextContent>
-            {
-              Product.locations.map((location, index) => (
-                <TextContent style={{ marginBottom: 5 }} type="subtext" key={index} color="darkGray" textStyle={{fontWeight: '300'}}>
-                  {convertAddressDataToString(location.address)}
-                </TextContent>
-              ))
-            }
-          </View>
-          <View style={styles.iconContainer}>
-            {following ?
-              <ButtonLike icon='heart' iconStyle={{ color: '#ca212e' }} onPress={onFollowing} /> :
-              <ButtonContainer
-                like={like}
-                favorite={favorite}
-                withLike
-                withBookMark
-                withShare
-                onAddFavorite={addToFavorites}
-                onRemoveFavorite={removeFromFavorites}
-                Product={Product}
-                onFollowing={onFollowing}
-                onBookMark={onBookMark}
-                wrapperStyle={styles.buttonsContainer}
-              />}
-            <Image source={{ uri: Product.businessId.logoUrl }} style={styles.brand} />
           </View>
         </View>
       </TouchableOpacity>
     </View>
   );
-}
+};
 
 ProductCard.propTypes = {
   Product: PropTypes.object,

@@ -1,6 +1,6 @@
-import Product from './product';
-import Session from './session';
-import User from './user';
+import * as Product from './product';
+import * as Session from './session';
+import * as User from './user';
 
 export {
   Product,
