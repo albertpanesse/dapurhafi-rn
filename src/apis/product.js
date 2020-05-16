@@ -10,3 +10,17 @@ export const getLatest = () => {
     }
   });
 };
+
+export const search = (keyword = '', categoryId = -1) => {
+  return axios(ApiAddresses.SEARCH_PRODUCTS, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    data: {
+      keyword,
+      categoryId
+    }
+  });
+};

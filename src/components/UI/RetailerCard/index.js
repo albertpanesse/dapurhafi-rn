@@ -8,9 +8,8 @@ import {TextContent} from '@/components/base';
 
 import styles from './styles';
 
-const ProductCard = ({data, onPreview}) => {
-  const imageUrl = `${API_HOST}/image/${data.ProductPicts[0].Filename}`;
-  const logoUrl = `${API_HOST}/image/${data.Retailer.ProfileImage}`;
+const RetailerCard = ({data, onPreview}) => {
+  const imageUrl = `${API_HOST}/image/${data.ProfileImage}`;
 
   return (
     <View style={styles.container}>
@@ -29,13 +28,10 @@ const ProductCard = ({data, onPreview}) => {
               type="regular"
               color="darkGray"
               bold
-              textStyle={{fontSize: 18}}
+              textStyle={{fontSize: 21}}
             >
               {data.Name}
             </TextContent>
-          </View>
-          <View style={styles.iconContainer}>
-            <Image source={{ uri: logoUrl }} style={styles.brand} />
           </View>
         </View>
       </TouchableOpacity>
@@ -43,8 +39,9 @@ const ProductCard = ({data, onPreview}) => {
   );
 };
 
-ProductCard.propTypes = {
+RetailerCard.propTypes = {
   data: PropTypes.object,
+  onPreview: PropTypes.func.isRequired,
 };
 
-export default ProductCard;
+export default RetailerCard;

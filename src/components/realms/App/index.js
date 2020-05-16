@@ -3,9 +3,27 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Icon} from 'react-native-elements';
 
-import {LatestScene, FavoriteScene, ProfileScene, CartScene} from '@/components/scenes';
+import {RetailerScene, CategoryScene, LatestScene, CartScene, ProfileScene} from '@/components/scenes';
 
 import appSetup from '@/setup';
+
+const RetailerStack = createStackNavigator(
+  {
+    Retailer: {screen: RetailerScene},
+  },
+  {
+    initialRouteName: 'Retailer',
+  },
+);
+
+const CategoryStack = createStackNavigator(
+  {
+    Category: {screen: CategoryScene},
+  },
+  {
+    initialRouteName: 'Category',
+  },
+);
 
 const LatestStack = createStackNavigator(
   {
@@ -13,24 +31,6 @@ const LatestStack = createStackNavigator(
   },
   {
     initialRouteName: 'Latest',
-  },
-);
-
-const FavoriteStack = createStackNavigator(
-  {
-    Favorite: {screen: FavoriteScene},
-  },
-  {
-    initialRouteName: 'Favorite',
-  },
-);
-
-const ProfileStack = createStackNavigator(
-  {
-    Profile: {screen: ProfileScene},
-  },
-  {
-    initialRouteName: 'Profile',
   },
 );
 
@@ -43,9 +43,44 @@ const CartStack = createStackNavigator(
   },
 );
 
+const ProfileStack = createStackNavigator(
+  {
+    Profile: {screen: ProfileScene},
+  },
+  {
+    initialRouteName: 'Profile',
+  },
+);
+
 const App = createBottomTabNavigator(
   {
-    Latest: {
+    Retailer: {
+      screen: RetailerStack,
+      navigationOptions: {
+        tabBarIcon: ({focused, tintColor}) => (
+          <Icon
+            name="shop"
+            type="entypo"
+            color={tintColor}
+            size={24}
+          />
+        ),
+      },
+    },
+    Kategori: {
+      screen: CategoryStack,
+      navigationOptions: {
+        tabBarIcon: ({focused, tintColor}) => (
+          <Icon
+            name="tags"
+            type="font-awesome"
+            color={tintColor}
+            size={24}
+          />
+        ),
+      },
+    },
+    Terbaru: {
       screen: LatestStack,
       navigationOptions: {
         tabBarIcon: ({focused, tintColor}) => (
@@ -58,20 +93,7 @@ const App = createBottomTabNavigator(
         ),
       },
     },
-    Favorite: {
-      screen: FavoriteStack,
-      navigationOptions: {
-        tabBarIcon: ({focused, tintColor}) => (
-          <Icon
-            name="heart"
-            type="font-awesome"
-            color={tintColor}
-            size={24}
-          />
-        ),
-      },
-    },
-    Cart: {
+    Keranjang: {
       screen: CartStack,
       navigationOptions: {
         tabBarIcon: ({focused, tintColor}) => (
@@ -84,7 +106,7 @@ const App = createBottomTabNavigator(
         ),
       },
     },
-    Profile: {
+    Profil: {
       screen: ProfileStack,
       navigationOptions: {
         tabBarIcon: ({focused, tintColor}) => (
@@ -99,7 +121,7 @@ const App = createBottomTabNavigator(
     },
   },
   {
-    initialRouteName: 'Latest',
+    initialRouteName: 'Terbaru',
     tabBarOptions: {
       activeTintColor: appSetup.light,
       inactiveTintColor: appSetup.green,

@@ -1,17 +1,19 @@
 import SplashScene from './Splash';
 import SignInScene from './SignIn';
 import SignUpScene from './SignUp';
+import RetailerScene from './Retailer';
+import CategoryScene from './Category';
 import LatestScene from './Latest';
-import FavoriteScene from './Favorite';
-import ProfileScene from './Profile';
 import CartScene from './Cart';
+import ProfileScene from './Profile';
 
 export {
 	SplashScene,
 	SignInScene,
 	SignUpScene,
+	RetailerScene,
+	CategoryScene,
 	LatestScene,
-	FavoriteScene,
+	CartScene,
 	ProfileScene,
-	CartScene
 }

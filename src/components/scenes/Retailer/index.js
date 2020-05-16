@@ -5,42 +5,42 @@ import {Container, View} from 'native-base';
 import {FlatList} from 'react-native';
 
 import {AppHeader, TextContent} from '@/components/base';
-import {AndroidStatusBar, ContainerCenter, ProductCard} from '@/components/UI';
-import {Actions as productActions} from '@/reducers/product';
+import {AndroidStatusBar, ContainerCenter, RetailerCard} from '@/components/UI';
+import {Actions as retailerActions} from '@/reducers/retailer';
 
 import styles from './styles';
 
-class Latest extends Component {
+class Retailer extends Component {
 
   static navigationOptions = {
-    header: () => <AppHeader header screenTitle="Terbaru" type="empty" />,
+    header: () => <AppHeader header screenTitle="Retailer" type="empty" />,
   };
 
   componentDidMount() {
-    const {getLatestProducts} = this.props;
+    const {getRetailers} = this.props;
 
-    getLatestProducts();
+    getRetailers();
   }
 
   _renderProduct = ({item}) => {
     return(
       <View style={styles.itemContainer}>
         <ContainerCenter>
-          <ProductCard data={item}/>
+          <RetailerCard data={item}/>
         </ContainerCenter>
       </View>
     )
   };
 
   render() {
-    const {latestProducts} = this.props;
+    const {retailers} = this.props;
 
     return (
       <Container>
         <AndroidStatusBar />
-        {latestProducts.length > 0 ? (
+        {retailers.length > 0 ? (
           <FlatList
-            data={latestProducts}
+            data={retailers}
             renderItem={this._renderProduct}
             keyExtractor={item => item.ID}
             contentContainerStyle={styles.content}
@@ -56,7 +56,7 @@ class Latest extends Component {
               alignItems: 'center',
             }}
             center>
-            Tidak ada produk terbaru
+            Tidak ada data retailer
           </TextContent>
         )}
       </Container>
@@ -66,11 +66,11 @@ class Latest extends Component {
 
 const mapStateToProps = state => ({
   user: state.sessionReducer.user,
-  latestProducts: state.productReducer.latestProducts,
+  retailers: state.retailerReducer.retailers,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getLatestProducts: () => dispatch(productActions.getLatestProducts()),
+  getRetailers: () => dispatch(retailerActions.getRetailers()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Latest);
+export default connect(mapStateToProps, mapDispatchToProps)(Retailer);
