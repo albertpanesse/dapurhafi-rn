@@ -5,10 +5,6 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: appSetup.darkGreen,
   },
-  backButton: {
-    color: appSetup.light,
-    fontSize: appSetup.textSizes.regular,
-  },
   headerLeft: { flex: 1 },
   headerRight: { flex: 1 },
   headerBody: {
@@ -18,6 +14,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   title: {
+    color: appSetup.light,
+    fontSize: appSetup.textSizes.regular,
+  },
+  menuButton: {
+    color: appSetup.light,
+    fontSize: appSetup.textSizes.regular,
+  },
+  cartButton: {
     color: appSetup.light,
     fontSize: appSetup.textSizes.regular,
   },

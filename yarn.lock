@@ -5837,7 +5837,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5982,6 +5982,13 @@ react-native-elements@^2.0.0:
     prop-types "^15.7.2"
     react-native-ratings "^6.5.0"
     react-native-status-bar-height "^2.2.0"
+
+react-native-fab@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/react-native-fab/-/react-native-fab-1.0.16.tgz#6fe2f2d23b2ae9a6e2a9e55b98f0abc31226c598"
+  integrity sha512-yuxmI8d+jBm981/BhcqutxyVlXxGd0dX7gtVrriYoYPIzFDzRaaoGbBiliCr9EBAlHFslZdIv60MwxiYfZl6EQ==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-gesture-handler@^1.6.1:
   version "1.6.1"

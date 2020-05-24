@@ -1,7 +1,9 @@
 import * as Types from './types';
 
 const initialState = {
-	latestProducts: []
+	product: {},
+	latestProducts: [],
+	searchResults: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +12,16 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				latestProducts: action.payload
+			};
+		case Types.SET_SEARCH_PRODUCTS:
+			return {
+				...state,
+				searchResults: action.payload
+			};
+		case Types.SET_PRODUCT_BY_ID:
+			return {
+				...state,
+				product: action.payload
 			};
 		default:
 			return state;

@@ -8,13 +8,12 @@ import {TextContent} from '@/components/base';
 
 import styles from './styles';
 
-const ProductCard = ({data, onPreview}) => {
-  const imageUrl = `${API_HOST}/image/${data.ProductPicts[0].Filename}`;
-  const logoUrl = `${API_HOST}/image/${data.Retailer.ProfileImage}`;
+const ProductCard = ({data, onProductPressed}) => {
+  const imageUrl = `${API_HOST}/${data.ProductPicts[0].Filename}`;
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={{ borderRadius: 10, overflow: 'hidden' }} activeOpacity={0.7}>
+      <TouchableOpacity style={{ borderRadius: 10, overflow: 'hidden' }} onPress={onProductPressed} activeOpacity={0.7}>
         <View style={styles.imageContainer}>
           <Thumbnail
             source={{ uri: imageUrl }}
@@ -33,9 +32,6 @@ const ProductCard = ({data, onPreview}) => {
             >
               {data.Name}
             </TextContent>
-          </View>
-          <View style={styles.iconContainer}>
-            <Image source={{ uri: logoUrl }} style={styles.brand} />
           </View>
         </View>
       </TouchableOpacity>

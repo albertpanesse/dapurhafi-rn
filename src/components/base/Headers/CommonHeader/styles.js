@@ -3,10 +3,10 @@ import appSetup from '@/setup';
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: appSetup.light,
+    backgroundColor: appSetup.darkGreen,
   },
   backButton: {
-    color: appSetup.dark,
+    color: appSetup.light,
     fontSize: appSetup.textSizes.regular,
   },
   headerLeft: { flex: 1 },
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    color: appSetup.dark,
+    color: appSetup.light,
     fontSize: appSetup.textSizes.regular + 2,
   },
 });

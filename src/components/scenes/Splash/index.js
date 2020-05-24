@@ -13,7 +13,7 @@ class Splash extends Component {
 
   componentDidMount() {
     this.timeout = setTimeout(() => {
-      this.props.navigation.navigate('Latest');
+      this.props.navigation.navigate('Produk');
     }, 2000);
   }
 
@@ -28,7 +28,6 @@ class Splash extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.commonReducer.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({});

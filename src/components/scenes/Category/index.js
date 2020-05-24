@@ -4,10 +4,8 @@ import {connect} from 'react-redux';
 import {Container, View} from 'native-base';
 import {FlatList} from 'react-native';
 
-import {AppHeader, DropDown, TextContent} from '@/components/base';
+import {AppHeader, TextContent} from '@/components/base';
 import {AndroidStatusBar, ContainerCenter} from '@/components/UI';
-import {Actions as categoryActions} from '@/reducers/category';
-import {Actions as productActions} from '@/reducers/product';
 
 import styles from './styles';
 
@@ -18,32 +16,14 @@ class Category extends Component {
   };
 
   componentDidMount() {
-    const {getCategories} = this.props;
-
-    getCategories();
   }
 
-  _categoryOnChange = (id) => {
-    const {searchProduct} = this.props;
-
-    searchProduct("", id);
-  };
-
   render() {
-    const {categories} = this.props;
-
-    const categoryOptions = categories ? categories.map(item => ({key: item.ID, label: item.Name})) : [];
+    const {retailers} = this.props;
 
     return (
       <Container>
         <AndroidStatusBar />
-          <View style={styles.dropDown}>
-            <DropDown
-              items={categoryOptions}
-              selectedItem=""
-              onChangeItem={this._categoryOnChange}
-            />
-          </View>
           <TextContent
             type="regular"
             color="dark"
@@ -54,7 +34,7 @@ class Category extends Component {
               alignItems: 'center',
             }}
             center>
-            Tidak ada produk
+            Tidak ada pemesanan
           </TextContent>
       </Container>
     );
@@ -62,13 +42,9 @@ class Category extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.sessionReducer.user,
-  categories: state.categoryReducer.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCategories: () => dispatch(categoryActions.getCategories()),
-  searchProduct: (keyword, categoryId) => dispatch(productActions.search(keyword, categoryId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category);

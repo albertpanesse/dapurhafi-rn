@@ -10,10 +10,10 @@ import {Actions as productActions} from '@/reducers/product';
 
 import styles from './styles';
 
-class Latest extends Component {
+class Timeline extends Component {
 
   static navigationOptions = {
-    header: () => <AppHeader header screenTitle="Terbaru" type="empty" />,
+    header: () => <AppHeader header screenTitle="Garis Waktu" type="empty" />,
   };
 
   componentDidMount() {
@@ -65,7 +65,6 @@ class Latest extends Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.sessionReducer.user,
   latestProducts: state.productReducer.latestProducts,
 });
 
@@ -73,4 +72,4 @@ const mapDispatchToProps = dispatch => ({
   getLatestProducts: () => dispatch(productActions.getLatestProducts()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Latest);
+export default connect(mapStateToProps, mapDispatchToProps)(Timeline);

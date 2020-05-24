@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import appSetup from '@/setup';
 
 export default StyleSheet.create({
   content: {
@@ -10,8 +9,5 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: '5%',
     paddingVertical: 5,
-  },
-  dropDown: {
-    marginTop: appSetup.windowSize * 0.05,
   },
 });

@@ -24,3 +24,13 @@ export const search = (keyword = '', categoryId = -1) => {
     }
   });
 };
+
+export const getProductById = (productId) => {
+  return axios(ApiAddresses.GET_PRODUCT_BY_ID(productId), {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+};
