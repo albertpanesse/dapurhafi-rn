@@ -62,7 +62,7 @@ export const getProductById = (productId) => (dispatch, getState) => {
           weight: Weight.toString(),
           weightUnit: WeightUnit,
           minOrder: MinOrder.toString(),
-          productPicts: ProductPicts,
+          mainPicture: ProductPicts[0].Filename,
           category: Category
         }});
       }

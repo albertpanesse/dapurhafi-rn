@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {Thumbnail, Text, View} from 'native-base';
-import {TouchableOpacity, Image} from 'react-native';
+import {Text, View} from 'native-base';
+import {TouchableOpacity} from 'react-native';
 import {API_HOST} from 'react-native-dotenv';
 
-import {TextContent} from '@/components/base';
+import {Image, TextContent} from '@/components/base';
 
 import styles from './styles';
 
@@ -14,13 +14,9 @@ const ProductCard = ({data, onProductPressed}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={{ borderRadius: 10, overflow: 'hidden' }} onPress={onProductPressed} activeOpacity={0.7}>
-        <View style={styles.imageContainer}>
-          <Thumbnail
-            source={{ uri: imageUrl }}
-            style={styles.image}
-            square
-          />
-        </View>
+        <Image
+          source={imageUrl}
+        />
         <View style={styles.cardBody}>
           <View style={styles.titleContainer}>
             <TextContent

@@ -1,5 +1,6 @@
 import {AppHeader, CommonHeader} from './Headers';
 import DropDown from './DropDown';
+import Image from './Image';
 import Input from './Input';
 import MultiLineInput from './MultiLineInput';
 import NumberInput from './NumberInput';
@@ -10,6 +11,7 @@ export {
 	AppHeader,
 	CommonHeader,
 	DropDown,
+	Image,
 	Input,
 	MultiLineInput,
 	NumberInput,

@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Container, Content, View} from 'native-base';
 import {FlatList, ScrollView} from 'react-native';
-import {Field, reduxForm} from 'redux-form';
+import {Field, formValueSelector, reduxForm} from 'redux-form';
 
-import {CommonHeader, DropDown, Input, MultiLineInput, NumberInput, TextContent} from '@/components/base';
+import {CommonHeader, DropDown, Image, Input, MultiLineInput, NumberInput, TextContent} from '@/components/base';
 import {AndroidStatusBar, ContainerCenter, CustomRoundedButton} from '@/components/UI';
 import {Actions as categoryActions} from '@/reducers/category';
 import {Actions as productActions} from '@/reducers/product';
 import * as InputValidation from '@/utils/helpers/inputDataValidation';
 import reduxFormClear from '@/utils/helpers/reduxFormClear';
 import productDefault from '@/defaults/product';
+import {API_HOST} from 'react-native-dotenv';
 
 import styles from './styles';
 
@@ -61,7 +62,7 @@ class ProductForm extends Component {
   };
 
   render() {
-    const {categories, change, touch, dispatch, handleSubmit} = this.props;
+    const {categories, change, touch, dispatch, handleSubmit, store} = this.props;
     const {selectedCategory, selectedWeightUnit} = this.state;
 
     const categoryOptions = categories ? categories.map(item => ({key: item.ID, label: item.Name})) : [];
@@ -133,6 +134,11 @@ class ProductForm extends Component {
               component={NumberInput}
               autoCorrect={false}
               onEraseText={() => reduxFormClear('product', {minOrder: '1'}, dispatch)}
+            />
+            <Field
+              label="Foto Utama"
+              name="mainPicture"
+              component={Image}
             />
           </View>
           <View style={styles.buttonContainer}>

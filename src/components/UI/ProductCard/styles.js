@@ -26,17 +26,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
-  imageContainer: {
-    width: '100%',
-    height: cardWidth / 2-15,
-    position: 'relative',
-    backgroundColor: appSetup.light,
-  },
-  image: {
-    flex: 1,
-    width: null,
-    resizeMode: 'cover',
-  },
   buttonsContainer: {
     zIndex: 400
   },
