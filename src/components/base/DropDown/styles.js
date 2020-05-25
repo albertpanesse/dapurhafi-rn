@@ -2,12 +2,17 @@ import {StyleSheet} from 'react-native';
 import appSetup from '@/setup';
 
 const styles = StyleSheet.create({
+  label: {
+    color: '#666',
+    fontSize: appSetup.textSizes.regular - 3,
+    marginTop: appSetup.windowSize * 0.02,
+  },
   button: {
-    width: '90%',
-    marginHorizontal: '5%',
+    width: '100%',
     borderWidth: 1,
     borderColor: appSetup.darkGreen,
     borderRadius: 4,
+    marginTop: appSetup.windowSize * 0.06,
   },
   buttonContent: {
     flexDirection: 'row',
@@ -16,11 +21,13 @@ const styles = StyleSheet.create({
     paddingVertical: appSetup.windowSize * 0.02,
   },
   textContent: {
+    marginLeft: 15,
     fontSize: appSetup.textSizes.regular - 3,
     color: appSetup.darkGreen,
   },
   icon: {
-    marginLeft: 15,
+    marginLeft: 'auto',
+    marginRight: 18,
     fontSize: appSetup.textSizes.regular - 3,
     color: appSetup.darkGreen,
   },
@@ -31,15 +38,14 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   dropDownContent: {
-    width: '90%',
-    marginHorizontal: '5%',
+    width: '100%',
     borderColor: appSetup.lightDark,
     borderWidth: 1,
     borderRadius: 4,
     backgroundColor: appSetup.light,
   },
   dropDownItem: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingVertical: appSetup.windowSize * 0.02,
     borderColor: appSetup.lightDark,
     borderWidth: 1,

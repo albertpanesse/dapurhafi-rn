@@ -8,7 +8,7 @@ import appSetup from '@/setup';
 
 import styles from './styles';
 
-class Input extends Component {
+class MultiLineInput extends Component {
   state = {
     isFocused: false,
     isDataInvisible: this.props.secure ? true : false,
@@ -45,6 +45,8 @@ class Input extends Component {
               value={bindValue ? input.value : false}
               secureTextEntry={this.state.isDataInvisible}
               onChangeText={input.onChange}
+              multiline={true}
+              numberOfLines={2}
               {...this.props}
             />
             {this.props.onEraseText && input.value ? (
@@ -77,4 +79,4 @@ class Input extends Component {
   }
 }
 
-export default Input;
+export default MultiLineInput;

@@ -20,16 +20,19 @@ class DropDown extends Component {
     const {onChangeItem} = this.props;
 
     onChangeItem(id);
-    
+
     this.setState({showOptions: false});
   }
 
   render() {
-    const {items, selectedItem, style} = this.props;
+    const {items, label, selectedItem, style} = this.props;
     const {showOptions} = this.state;
 
     return (
       <Fragment>
+        <View style={{ height: 26}}>
+          <Text style={styles.label}>{label}</Text>
+        </View>
         <TouchableOpacity onPress={this._onToggleOptions}>
           <View style={styles.button}>
             <View style={styles.buttonContent}>
