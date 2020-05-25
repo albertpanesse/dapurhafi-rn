@@ -15,6 +15,9 @@ import appSetup from '@/setup';
 import styles from './styles';
 
 class Product extends Component {
+  state = {
+    selectedCategory: "",
+  };
 
   static navigationOptions = {
     header: () => <AppHeader header screenTitle="Produk" type="empty" />,
@@ -24,12 +27,16 @@ class Product extends Component {
     const {getCategories, productSearch} = this.props;
 
     getCategories();
-
     productSearch("", -1);
   }
 
   _categoryOnChange = (id) => {
-    const {productSearch} = this.props;
+    const {categories, productSearch} = this.props;
+
+    const filteredCategories = categories.filter(item => item.ID === id);
+    if (filteredCategories && filteredCategories.length > 0) {
+      this.setState({selectedCategory: filteredCategories[0].Name});
+    }
 
     productSearch("", id);
   };
@@ -37,14 +44,16 @@ class Product extends Component {
   _onProductPressed = (productId) => {
     const {getProductById, navigation} = this.props;
 
-    navigation.navigate('FormProduk', { backRoute: 'Produk' });
     getProductById(productId);
+
+    navigation.navigate('FormProduk', { backRoute: 'Produk' });
   };
+
   _renderProduct = ({item}) => {
     return(
       <View style={styles.itemContainer}>
         <ContainerCenter>
-          <ProductCard data={item} onProductPressed={this._onProductPressed(item.ID)}/>
+          <ProductCard data={item} onProductPressed={() => this._onProductPressed(item.ID)}/>
         </ContainerCenter>
       </View>
     )
@@ -52,17 +61,18 @@ class Product extends Component {
 
   render() {
     const {navigation, categories, searchResults} = this.props;
+    const {selectedCategory} = this.state;
 
     const categoryOptions = categories ? categories.map(item => ({key: item.ID, label: item.Name})) : [];
 
     return (
-      <Container>
+      <Container style={styles.wrapper}>
         <AndroidStatusBar />
-        <View style={styles.dropDown}>
+        <View style={styles.dropDownWrapper}>
           <DropDown
             items={categoryOptions}
-            selectedItem=""
-            onChangeItem={this._categoryOnChange}
+            selectedItem={selectedCategory}
+            onItemSelected={this._categoryOnChange}
           />
         </View>
         {searchResults.length > 0 ? (

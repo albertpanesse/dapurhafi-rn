@@ -54,14 +54,14 @@ class ProductForm extends Component {
     }
   };
 
-  _onSubmit = (values) => {
+  _onSubmit = () => {
     const {addProduct} = this.props;
 
     addProduct();
   };
 
   render() {
-    const {categories, change, dispatch, handleSubmit} = this.props;
+    const {categories, change, touch, dispatch, handleSubmit} = this.props;
     const {selectedCategory, selectedWeightUnit} = this.state;
 
     const categoryOptions = categories ? categories.map(item => ({key: item.ID, label: item.Name})) : [];
@@ -87,9 +87,10 @@ class ProductForm extends Component {
               name="name"
               placeholder="..."
               component={Input}
+              touch={touch}
               autoCorrect={false}
               onEraseText={() => reduxFormClear('product', {name: ''}, dispatch)}
-              validate={InputValidation.nameValidaton}
+              validate={[InputValidation.required]}
             />
             <Field
               label="Deskripsi"
@@ -97,13 +98,7 @@ class ProductForm extends Component {
               placeholder="..."
               component={MultiLineInput}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {desc: ''},
-                  dispatch,
-                )
-              }
+              onEraseText={() => reduxFormClear('product', {desc: ''}, dispatch)}
             />
             <Field
               label="Harga"
@@ -111,13 +106,7 @@ class ProductForm extends Component {
               placeholder="Harga ..."
               component={NumberInput}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {price: '0'},
-                  dispatch,
-                )
-              }
+              onEraseText={() => reduxFormClear('product', {price: '0'}, dispatch)}
             />
             <Field
               label="Berat"
@@ -125,13 +114,7 @@ class ProductForm extends Component {
               placeholder="Berat ..."
               component={NumberInput}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {weight: '0'},
-                  dispatch,
-                )
-              }
+              onEraseText={() => reduxFormClear('product', {weight: '0'}, dispatch)}
             />
             <Field
               label="Satuan"
@@ -149,13 +132,7 @@ class ProductForm extends Component {
               placeholder="Min. order ..."
               component={NumberInput}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {minOrder: '1'},
-                  dispatch,
-                )
-              }
+              onEraseText={() => reduxFormClear('product', {minOrder: '1'}, dispatch)}
             />
           </View>
           <View style={styles.buttonContainer}>
@@ -173,7 +150,7 @@ class ProductForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  initialValues: productDefault,
+  initialValues: state.product.product || productDefault,
   categories: state.category.categories,
 });
 

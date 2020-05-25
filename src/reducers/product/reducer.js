@@ -1,7 +1,7 @@
 import * as Types from './types';
 
 const initialState = {
-	product: {},
+	product: null,
 	latestProducts: [],
 	searchResults: []
 };

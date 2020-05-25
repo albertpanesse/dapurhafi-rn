@@ -19,7 +19,7 @@ export const getLatestProducts = () => (dispatch, getState) => {
 
   Product.getLatest()
     .then((resp) => {
-      if (resp.data.success && resp.data.data && resp.data.data.length > 0) {
+      if (resp.data.success) {
         dispatch({type: Types.GET_LATEST_PRODUCTS_SUCCESS});
         dispatch({type: Types.SET_LATEST_PRODUCTS, payload: resp.data.data});
       }
@@ -34,7 +34,7 @@ export const search = (keyword, categoryId) => (dispatch, getState) => {
 
   Product.search(keyword, categoryId)
     .then((resp) => {
-      if (resp.data.success && resp.data.data && resp.data.data.length > 0) {
+      if (resp.data.success) {
         dispatch({type: Types.SEARCH_PRODUCTS_SUCCESS});
         dispatch({type: Types.SET_SEARCH_PRODUCTS, payload: resp.data.data});
       }
@@ -49,9 +49,22 @@ export const getProductById = (productId) => (dispatch, getState) => {
 
   Product.getProductById(productId)
     .then((resp) => {
-      if (resp.data.success && resp.data.data && resp.data.data.length > 0) {
+      if (resp.data.success) {
         dispatch({type: Types.GET_PRODUCT_BY_ID_SUCCESS});
-        dispatch({type: Types.SET_PRODUCT_BY_ID, payload: resp.data.data});
+
+        const {CategoryID, ID, Name, Desc, Price, Weight, WeightUnit, MinOrder, ProductPicts, Category} = resp.data.data;
+        dispatch({type: Types.SET_PRODUCT_BY_ID, payload: {
+          categoryID: CategoryID,
+          id: ID,
+          name: Name,
+          desc: Desc,
+          price: Price.toString(),
+          weight: Weight.toString(),
+          weightUnit: WeightUnit,
+          minOrder: MinOrder.toString(),
+          productPicts: ProductPicts,
+          category: Category
+        }});
       }
     })
     .catch(error => {

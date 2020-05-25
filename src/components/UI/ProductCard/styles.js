@@ -5,6 +5,7 @@ const cardWidth = appSetup.windowSize * 0.9;
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     marginVertical: 10,
     borderWidth: 1,
     borderRadius: 15,
@@ -54,27 +55,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 5
   },
-  BookMark: {
-    position: 'absolute',
-    top: 15,
-    right: 15,
-    zIndex: 500
-  },
-  discount: {
-    width: 70,
-    height: 32,
-    backgroundColor: appSetup.darkGreen,
-    alignItems: 'center',
-    justifyContent: 'center'  ,
-    position: 'absolute',
-    bottom: 0,
-    left: 0
-  },
-  discountText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '500'
-  }
 });
 
 export default styles;

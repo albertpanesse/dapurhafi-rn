@@ -29,7 +29,11 @@ class DropDown extends Component {
 
   _onSelectItem = (id) => {
     const {input, change, onItemSelected} = this.props;
-    change(input.name, id);
+
+    if (input) {
+      change(input.name, id);
+    }
+    
     onItemSelected(id);
     this.setState({showOptions: false});
   }
@@ -40,9 +44,11 @@ class DropDown extends Component {
 
     return (
       <Fragment>
-        <View style={{ height: 26}}>
-          <Text style={styles.label}>{label}</Text>
-        </View>
+        {label && label !== "" && (
+          <View style={{ height: 26}}>
+            <Text style={styles.label}>{label}</Text>
+          </View>
+        )}
         <TouchableOpacity onPress={this._onToggleOptions}>
           <View style={styles.button}>
             <View style={styles.buttonContent}>

@@ -6,7 +6,7 @@ export const getCategories = () => (dispatch, getState) => {
 
   Category.getCategories()
     .then((resp) => {
-      if (resp.data.success && resp.data.data && resp.data.data.length > 0) {
+      if (resp.data.success) {
         dispatch({type: Types.GET_CATEGORIES_SUCCESS});
         dispatch({type: Types.SET_CATEGORIES, payload: resp.data.data});
       }

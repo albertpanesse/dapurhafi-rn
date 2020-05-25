@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
     borderColor: appSetup.default,
     borderBottomWidth: 2,
   },
+  inputOnError: {
+    borderColor: appSetup.danger,
+    borderBottomWidth: 2,
+  },
   additionalContainer: {
     flex: 1,
     height: '100%',

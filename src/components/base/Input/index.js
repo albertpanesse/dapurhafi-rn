@@ -3,7 +3,7 @@ import {TextInput, Text, View, TouchableOpacity} from 'react-native';
 import {Icon} from 'native-base';
 import * as Animatable from 'react-native-animatable';
 
-import {TextContent} from '@/components/UI';
+import {TextContent} from '@/components/base';
 import appSetup from '@/setup';
 
 import styles from './styles';
@@ -18,10 +18,30 @@ class Input extends Component {
     this.setState(prevState => ({isDataInvisible: !prevState.isDataInvisible}));
   };
 
-  _onToggleFocusHandler = () =>
+  _onToggleFocusHandler = () => {
+    const {input, touch} = this.props;
+
+    touch(input.name);
+
     this.setState(prevState => ({
       isFocused: !prevState.isFocused,
     }));
+  };
+
+  _getConditionalStyle = () => {
+    const {meta} = this.props;
+    const {isFocused} = this.state;
+
+    if (isFocused) {
+      return styles.inputOnFocus;
+    } else {
+      if (meta.touched && meta.error) {
+        return styles.inputOnError;
+      } else {
+        return styles.inputOnBlur;
+      }
+    }
+  };
 
   render() {
     const {input, meta, label} = this.props;
@@ -34,7 +54,7 @@ class Input extends Component {
           <View
             style={[
               styles.inputBox,
-              this.state.isFocused ? styles.inputOnFocus : styles.inputOnBlur,
+              this._getConditionalStyle(),
             ]}>
             <TextInput
               onFocus={this._onToggleFocusHandler}

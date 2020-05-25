@@ -23,6 +23,21 @@ class NumberInput extends Component {
       isFocused: !prevState.isFocused,
     }));
 
+  _getConditionalStyle = () => {
+    const {meta} = this.props;
+    const {isFocused} = this.state;
+
+    if (isFocused) {
+      return styles.inputOnFocus;
+    } else {
+      if (meta.touched && meta.error) {
+        return styles.inputOnError;
+      } else {
+        return styles.inputOnBlur;
+      }
+    }
+  };
+
   render() {
     const {input, meta, label} = this.props;
     return (
@@ -34,7 +49,7 @@ class NumberInput extends Component {
           <View
             style={[
               styles.inputBox,
-              this.state.isFocused ? styles.inputOnFocus : styles.inputOnBlur,
+              this._getConditionalStyle(),
             ]}>
             <TextInput
               onFocus={this._onToggleFocusHandler}
