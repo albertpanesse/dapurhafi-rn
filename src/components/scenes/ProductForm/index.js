@@ -9,10 +9,19 @@ import {CommonHeader, DropDown, Input, MultiLineInput, NumberInput, TextContent}
 import {AndroidStatusBar, ContainerCenter, CustomRoundedButton} from '@/components/UI';
 import {Actions as categoryActions} from '@/reducers/category';
 import {Actions as productActions} from '@/reducers/product';
+import * as InputValidation from '@/utils/helpers/inputDataValidation';
+import reduxFormClear from '@/utils/helpers/reduxFormClear';
+import productDefault from '@/defaults/product';
 
 import styles from './styles';
 
+const weightUnits = [{key: 'kg', label: 'Kilogram'}, {key: 'gr', label: 'Gram'}];
+
 class ProductForm extends Component {
+  state = {
+    selectedCategory: "",
+    selectedWeightUnit: "",
+  }
 
   static navigationOptions = {
     header: () => (
@@ -30,11 +39,30 @@ class ProductForm extends Component {
   }
 
   _categoryOnChange = (id) => {
-    const {productSearch} = this.props;
+    const {categories} = this.props;
+
+    const filteredCategories = categories.filter(item => item.ID === id);
+    if (filteredCategories && filteredCategories.length > 0) {
+      this.setState({selectedCategory: filteredCategories[0].Name});
+    }
+  };
+
+  _WeightUnitOnChange = (id) => {
+    const filteredWeightUnits = weightUnits.filter(item => item.key === id);
+    if (filteredWeightUnits && filteredWeightUnits.length > 0) {
+      this.setState({selectedWeightUnit: filteredWeightUnits[0].label});
+    }
+  };
+
+  _onSubmit = (values) => {
+    const {addProduct} = this.props;
+
+    addProduct();
   };
 
   render() {
-    const {categories} = this.props;
+    const {categories, change, dispatch, handleSubmit} = this.props;
+    const {selectedCategory, selectedWeightUnit} = this.state;
 
     const categoryOptions = categories ? categories.map(item => ({key: item.ID, label: item.Name})) : [];
 
@@ -46,19 +74,13 @@ class ProductForm extends Component {
             <Field
               label="Kategori"
               name="categoryID"
-              placeholder="Satuan berat ..."
               component={DropDown}
               items={categoryOptions}
-              selectedItem=""
+              selectedItem={selectedCategory}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {categoryID: '0'},
-                  this.props.dispatch,
-                )
-              }
-              onChangeItem={this._categoryOnChange}
+              change={change}
+              onItemSelected={this._categoryOnChange}
+              validate={[InputValidation.required]}
             />
             <Field
               label="Nama Produk"
@@ -66,13 +88,8 @@ class ProductForm extends Component {
               placeholder="..."
               component={Input}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {name: ''},
-                  this.props.dispatch,
-                )
-              }
+              onEraseText={() => reduxFormClear('product', {name: ''}, dispatch)}
+              validate={InputValidation.nameValidaton}
             />
             <Field
               label="Deskripsi"
@@ -84,7 +101,7 @@ class ProductForm extends Component {
                 reduxFormClear(
                   'product',
                   {desc: ''},
-                  this.props.dispatch,
+                  dispatch,
                 )
               }
             />
@@ -98,10 +115,9 @@ class ProductForm extends Component {
                 reduxFormClear(
                   'product',
                   {price: '0'},
-                  this.props.dispatch,
+                  dispatch,
                 )
               }
-              defaultValue="0"
             />
             <Field
               label="Berat"
@@ -113,26 +129,19 @@ class ProductForm extends Component {
                 reduxFormClear(
                   'product',
                   {weight: '0'},
-                  this.props.dispatch,
+                  dispatch,
                 )
               }
-              defaultValue="0"
             />
             <Field
               label="Satuan"
               name="weightUnit"
-              placeholder="Satuan berat ..."
               component={DropDown}
-              items={[{key: 'kg', label: 'Kilogram'}, {key: 'gr', label: 'Gram'}]}
-              selectedItem="Kilogram"
+              items={weightUnits}
+              selectedItem={selectedWeightUnit}
+              change={change}
+              onItemSelected={this._WeightUnitOnChange}
               autoCorrect={false}
-              onEraseText={() =>
-                reduxFormClear(
-                  'product',
-                  {weightUnit: 'kg'},
-                  this.props.dispatch,
-                )
-              }
             />
             <Field
               label="Min. Order"
@@ -144,16 +153,15 @@ class ProductForm extends Component {
                 reduxFormClear(
                   'product',
                   {minOrder: '1'},
-                  this.props.dispatch,
+                  dispatch,
                 )
               }
-              defaultValue="1"
             />
           </View>
           <View style={styles.buttonContainer}>
             <CustomRoundedButton
               buttonStyle={{width: '80%'}}
-              onPress={() => { alert('Test!'); }}
+              onPress={handleSubmit(this._onSubmit)}
               theme="danger">
               Simpan
             </CustomRoundedButton>
@@ -165,11 +173,15 @@ class ProductForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categoryReducer.categories,
+  initialValues: productDefault,
+  categories: state.category.categories,
 });
 
 const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(categoryActions.getCategories()),
+  addProduct: () => dispatch(productActions.addProduct()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'product', destroyOnUnmount: false})(ProductForm));
+const decoratedProductForm = reduxForm({form: 'product', enableReinitialize: true})(ProductForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(decoratedProductForm);

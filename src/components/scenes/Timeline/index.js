@@ -65,7 +65,7 @@ class Timeline extends Component {
 }
 
 const mapStateToProps = state => ({
-  latestProducts: state.productReducer.latestProducts,
+  latestProducts: state.product.latestProducts,
 });
 
 const mapDispatchToProps = dispatch => ({

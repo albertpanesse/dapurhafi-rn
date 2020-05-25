@@ -1,6 +1,19 @@
 import {Product} from '@/apis';
 import * as Types from './types';
 
+export const addProduct = () => (dispatch, getState) => {
+  const values = getState().form.product.values;
+  console.log('values', values);
+
+  // console.log('categoryID', categoryID);
+  // console.log('name', name);
+  // console.log('desc', desc);
+  // console.log('price', price);
+  // console.log('weight', weight);
+  // console.log('weightUnit', weightUnit);
+  // console.log('minOrder', minOrder);
+};
+
 export const getLatestProducts = () => (dispatch, getState) => {
   dispatch({type: Types.GET_LATEST_PRODUCTS_START});
 

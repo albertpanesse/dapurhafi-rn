@@ -10,17 +10,27 @@ class DropDown extends Component {
 
   state = {
     showOptions: false,
+    initial: "",
+  }
+
+  componentDidUpdate() {
+    const {onItemSelected, meta} = this.props;
+    const {initial} = this.state;
+
+    if (meta && meta.initial && initial === "") {
+      onItemSelected(meta.initial);
+      this.setState({initial: meta.initial});
+    }
   }
 
   _onToggleOptions = () => {
     this.setState(prevState => ({ showOptions: !prevState.showOptions }));
   }
 
-  _onSelectItem = id => {
-    const {onChangeItem} = this.props;
-
-    onChangeItem(id);
-
+  _onSelectItem = (id) => {
+    const {input, change, onItemSelected} = this.props;
+    change(input.name, id);
+    onItemSelected(id);
     this.setState({showOptions: false});
   }
 

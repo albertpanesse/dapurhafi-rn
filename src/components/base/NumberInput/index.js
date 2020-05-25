@@ -24,7 +24,7 @@ class NumberInput extends Component {
     }));
 
   render() {
-    const {input, meta, label, bindValue = false} = this.props;
+    const {input, meta, label} = this.props;
     return (
       <React.Fragment>
         <View style={styles.inputContainer}>
@@ -42,10 +42,11 @@ class NumberInput extends Component {
               style={styles.input}
               underlineColorAndroid="transparent"
               placeholderTextColor={appSetup.lightDefault}
-              value={bindValue ? input.value : false}
+              value={input.value}
               secureTextEntry={this.state.isDataInvisible}
               onChangeText={input.onChange}
               textAlign="right"
+              keyboardType="number-pad"
               {...this.props}
             />
             {this.props.onEraseText && input.value ? (

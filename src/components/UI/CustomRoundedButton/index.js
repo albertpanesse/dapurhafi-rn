@@ -10,7 +10,7 @@ const CustomRoundedButton = ({children, onPress, theme, loading = false, disable
   return (
     <View style={styles.container}>
       <TouchableHighlight
-        onPress={disabled || loading ? undefined : onPress} //fixed by QQ ()=>{} ===> undefined
+        onPress={disabled || loading ? undefined : onPress}
         style={[styles.button, disabled && styles.disabled, buttonStyle]}
         underlayColor={appSetup[disabled ? 'disabled' : 'darkGreen']}>
         {loading ? (

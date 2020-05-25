@@ -98,8 +98,8 @@ class Product extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categoryReducer.categories,
-  searchResults: state.productReducer.searchResults,
+  categories: state.category.categories,
+  searchResults: state.product.searchResults,
 });
 
 const mapDispatchToProps = dispatch => ({
