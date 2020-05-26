@@ -7,13 +7,11 @@ import {AndroidStatusBar} from '@/components/UI/StatusBars';
 import styles from './styles';
 
 class Splash extends Component {
-  static navigationOptions = {
-    headerShown: false,
-  };
-
   componentDidMount() {
+    const {navigation} = this.props;
+
     this.timeout = setTimeout(() => {
-      this.props.navigation.navigate('Produk');
+      navigation.navigate('App')
     }, 2000);
   }
 

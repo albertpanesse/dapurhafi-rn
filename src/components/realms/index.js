@@ -1,7 +1,7 @@
-import SplashRealm from './Splash';
-import AppRealm from './App';
+import Splash from './Splash';
+import App from './App';
 
 export {
-	SplashRealm,
-	AppRealm
+	Splash,
+	App
 }

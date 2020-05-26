@@ -1,13 +1,13 @@
-import SplashScene from './Splash';
-import CategoryScene from './Category';
-import ProductScene from './Product';
-import ProductFormScene from './ProductForm';
-import TimelineScene from './Timeline';
+import Splash from './Splash';
+import Category from './Category';
+import Product from './Product';
+import ProductForm from './ProductForm';
+import Timeline from './Timeline';
 
 export {
-	SplashScene,
-	CategoryScene,
-	ProductScene,
-	ProductFormScene,
-	TimelineScene,
+	Splash,
+	Category,
+	Product,
+	ProductForm,
+	Timeline,
 }

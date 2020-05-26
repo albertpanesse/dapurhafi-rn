@@ -1,16 +1,30 @@
-import {createSwitchNavigator, createAppContainer} from 'react-navigation';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {SplashRealm, AppRealm} from '@/components/realms';
+import {Splash as SplashRealm, App as AppRealm} from '@/components/realms';
 
-const MainApp = createSwitchNavigator(
-  {
-  	Splash: SplashRealm,
-    App: AppRealm,
-  },
-  {
-    initialRouteName: 'Splash',
-    headerShown: false
-  },
-);
+const Stack = createStackNavigator();
 
-export default createAppContainer(MainApp);
+function MainApp() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Splash"
+      >
+        <Stack.Screen
+          name="Splash"
+          component={SplashRealm}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="App"
+          component={AppRealm}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default MainApp;

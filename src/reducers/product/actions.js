@@ -71,3 +71,7 @@ export const getProductById = (productId) => (dispatch, getState) => {
       dispatch({type: Types.GET_PRODUCT_BY_ID_FAIL});
     });
 };
+
+export const unsetProduct = () => (dispatch) => {
+  dispatch({type: Types.UNSET_PRODUCT});
+};

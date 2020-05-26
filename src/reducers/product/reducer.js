@@ -23,6 +23,11 @@ const reducer = (state = initialState, action) => {
 				...state,
 				product: action.payload
 			};
+		case Types.UNSET_PRODUCT:
+			return {
+				...state,
+				product: null
+			};
 		default:
 			return state;
 	}

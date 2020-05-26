@@ -1,14 +1,22 @@
-import {createStackNavigator} from 'react-navigation-stack';
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {SplashScene} from '@/components/scenes';
+import {Splash as SplashScene} from '@/components/scenes';
 
-const Splash = createStackNavigator(
-  {
-    Splash: { screen: SplashScene },
-  },
-  {
-    initialRouteName: 'Splash',
-  },
-);
+const Stack = createStackNavigator();
+
+function Splash() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Splash"
+    >
+      <Stack.Screen
+        name="Splash"
+        component={SplashScene}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default Splash;

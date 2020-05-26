@@ -33,7 +33,7 @@ class DropDown extends Component {
     if (input) {
       change(input.name, id);
     }
-    
+
     onItemSelected(id);
     this.setState({showOptions: false});
   }

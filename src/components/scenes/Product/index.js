@@ -19,10 +19,6 @@ class Product extends Component {
     selectedCategory: "",
   };
 
-  static navigationOptions = {
-    header: () => <AppHeader header screenTitle="Produk" type="empty" />,
-  };
-
   componentDidMount() {
     const {getCategories, productSearch} = this.props;
 
@@ -46,7 +42,7 @@ class Product extends Component {
 
     getProductById(productId);
 
-    navigation.navigate('FormProduk', { backRoute: 'Produk' });
+    navigation.push('ProductForm');
   };
 
   _renderProduct = ({item}) => {
@@ -57,6 +53,14 @@ class Product extends Component {
         </ContainerCenter>
       </View>
     )
+  };
+
+  _fabOnClick = () => {
+    const {unsetProduct, navigation} = this.props;
+
+    unsetProduct();
+
+    navigation.push('ProductForm');
   };
 
   render() {
@@ -98,7 +102,7 @@ class Product extends Component {
         )}
         <FAB
           buttonColor={appSetup.darkGreen}
-          onClickAction={() => navigation.navigate('FormProduk')}
+          onClickAction={() => this._fabOnClick()}
           visible={true}
           iconTextComponent={<Icon name="plus" type="font-awesome" />}
         />
@@ -116,6 +120,7 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(categoryActions.getCategories()),
   productSearch: (keyword, categoryId) => dispatch(productActions.search(keyword, categoryId)),
   getProductById: (productId) => dispatch(productActions.getProductById(productId)),
+  unsetProduct: (productId) => dispatch(productActions.unsetProduct()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

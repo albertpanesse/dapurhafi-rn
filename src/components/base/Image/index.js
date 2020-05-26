@@ -16,7 +16,7 @@ class Image extends Component {
       imageUrl = `${source}`;
     }
 
-    console.log('imageUrl', imageUrl);
+    // console.log('imageUrl', imageUrl);
 
     return (
       <Fragment>

@@ -5,7 +5,7 @@ import {Container, Content, View} from 'native-base';
 import {FlatList, ScrollView} from 'react-native';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 
-import {CommonHeader, DropDown, Image, Input, MultiLineInput, NumberInput, TextContent} from '@/components/base';
+import {DropDown, Image, Input, MultiLineInput, NumberInput, TextContent} from '@/components/base';
 import {AndroidStatusBar, ContainerCenter, CustomRoundedButton} from '@/components/UI';
 import {Actions as categoryActions} from '@/reducers/category';
 import {Actions as productActions} from '@/reducers/product';
@@ -23,15 +23,6 @@ class ProductForm extends Component {
     selectedCategory: "",
     selectedWeightUnit: "",
   }
-
-  static navigationOptions = {
-    header: () => (
-      <CommonHeader
-        header
-        screenTitle="Form Produk"
-        type="empty" />
-    ),
-  };
 
   componentDidMount() {
     const {getCategories} = this.props;
