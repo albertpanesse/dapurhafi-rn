@@ -39,7 +39,7 @@ function ProductStack({navigation}) {
         name="ProductForm"
         component={ProductFormScene}
         options={{
-          header: () => <CommonHeader navigation={navigation} header screenTitle="Form Produk" backRoute="Product" type="empty" />
+          header: () => <CommonHeader navigation={navigation} screenTitle="Form Produk" backRoute="Product" />
         }}
       />
     </Stack.Navigator>
@@ -83,7 +83,7 @@ function App() {
       }}
     >
       <Tab.Screen
-        name="Category"
+        name="CategoryTab"
         component={CategoryStack}
         options={{
           tabBarLabel: "Kategori",
@@ -98,7 +98,7 @@ function App() {
         }}
       />
       <Tab.Screen
-        name="Product"
+        name="ProductTab"
         component={ProductStack}
         options={{
           tabBarLabel: "Produk",
@@ -113,7 +113,7 @@ function App() {
         }}
       />
       <Tab.Screen
-        name="Timeline"
+        name="TimelineTab"
         component={TimelineStack}
         options={{
           tabBarLabel: "Time Line",

@@ -11,7 +11,7 @@ class Splash extends Component {
     const {navigation} = this.props;
 
     this.timeout = setTimeout(() => {
-      navigation.navigate('App')
+      navigation.navigate('App', {screen: 'ProductTab'})
     }, 2000);
   }
 
